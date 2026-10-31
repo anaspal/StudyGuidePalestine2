@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="theme-color" content="#14263B" />
+    <meta name="description" content="StudyGuide Palestine — بوابة تعليمية حديثة لطلبة فلسطين." />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" type="image/png" href="assets/media/studyguide-official-logo_fc6acc46.png" />
+    <link rel="apple-touch-icon" href="assets/media/studyguide-official-logo_fc6acc46.png" />
+    <script>try{if(localStorage.getItem("sg-glass")==="on"){document.documentElement.dataset.glass="on";if(localStorage.getItem("sg-lang")==="en"){document.documentElement.lang="en";document.documentElement.dir="ltr"}var flowBg=localStorage.getItem("sg-flow-background");if(flowBg==="aurora")flowBg="landscape";if(["flow","colorful","landscape"].includes(flowBg))document.documentElement.dataset.flowBackground=flowBg}}catch(e){}</script>
+    <title>StudyGuide Palestine | دليل الدراسة فلسطين</title>
+    <script>
+(function(){
+  var KEY="sg-installed";
+  function get(){try{return localStorage.getItem(KEY)==="1"}catch(e){return false}}
+  function set(v){try{v?localStorage.setItem(KEY,"1"):localStorage.removeItem(KEY)}catch(e){}}
+  function standalone(){
+    try{
+      return window.matchMedia("(display-mode: standalone)").matches||
+             window.matchMedia("(display-mode: fullscreen)").matches||
+             window.matchMedia("(display-mode: minimal-ui)").matches||
+             window.navigator.standalone===true;
+    }catch(e){return false}
+  }
+  /* هل الموقع مثبّت كتطبيق؟ (يعمل كتطبيق الآن، أو سبق تثبيته على هذا الجهاز) */
+  window.__sgIsInstalled=function(){
+    if(standalone()){set(true);return true}
+    return get();
+  };
+  if(standalone())set(true);
+  window.addEventListener("beforeinstallprompt",function(e){
+    e.preventDefault();window.__sgInstall=e;
+    /* المتصفح يعرض التثبيت = التطبيق غير مثبّت (أو تم حذفه) */
+    set(false);
+  });
+  window.addEventListener("appinstalled",function(){
+    set(true);window.__sgInstall=null;
+    try{window.dispatchEvent(new Event("sg-installed"))}catch(e){}
+  });
+  /* كروم: يكتشف التطبيق المثبّت حتى لو فُتح الموقع داخل المتصفح */
+  try{
+    if(navigator.getInstalledRelatedApps){
+      navigator.getInstalledRelatedApps().then(function(a){
+        if(a&&a.length){set(true);try{window.dispatchEvent(new Event("sg-installed"))}catch(e){}}
+      }).catch(function(){});
+    }
+  }catch(e){}
+})();
+</script>
+    <script type="module" crossorigin src="./assets/index-Hk2Vn6Tz.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Pw4Rm8Ve.css">
+    <link rel="stylesheet" href="./assets/flow-17.css">
+    <script defer src="./assets/flow-17.js"></script>
+    <script defer src="./assets/flow-notifications.js"></script>
+    <script defer src="./assets/flow-interactions.js"></script>
+    <script defer src="./assets/flow-stack.js"></script>
+    <script defer src="./assets/flow-battery.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script defer src="https://manus-analytics.com/umami" data-website-id="be924c6c-4318-47d9-96c3-681dfb77f2b5"></script>
+    <script type="module" src="./admin.js"></script>
+  </body>
+</html>
